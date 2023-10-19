@@ -1,0 +1,35 @@
+
+<div style="padding-top: 10px; padding-left: 15px;">
+    <a [routerLink]="'/employee/all'" style="padding-top: 10px;">Back to list</a>
+    <h4>{{title}}</h4>
+    <div *ngIf="employee">
+        <div [ngSwitch]="employee.id" (click)="onEmployeeClick(employee.id)">
+            <label *ngSwitchCase="2" class="label-green">
+                Swtich case condition meets
+                <span><b>Name</b></span>: <span>{{employee.name}}</span>
+                <div *ngIf="employee.child">
+                    <div *ngFor="let child of employee.child">
+                        {{child.id}}
+                    </div>
+                </div>
+            </label>
+            <label *ngSwitchDefault style="display: block;" highlight>
+                Swtich case condition does not meets
+                <span><b>Name</b></span>: <span class="labal-value">{{employee.name}}</span>
+                <div *ngIf="employee.child">
+                    <div *ngFor="let child of employee.child">
+                        <div [ngSwitch]="child.id">
+                            <label *ngSwitchCase="11" style="color: white">{{child.id}}</label>
+                            <label *ngSwitchDefault>{{child.id}}</label>
+                        </div>
+                    </div>
+                </div>
+            </label>
+        </div>
+        <label style="display: block;" highlight>
+            <span><b>Id</b></span>: <span>{{employee.id}}</span>
+        </label>
+    </div>
+</div>
+
+
