@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { EmployeeRoutingModule } from './employee-routing.module';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeHomeComponent } from './employee-home/employee-home.component';
@@ -20,6 +19,6 @@ import { HighlightDirective } from 'src/app/directives/highlight.directive';
     CommonModule,
     RouterModule,
     EmployeeRoutingModule
-  ]
+  ],
 })
 export class EmployeeModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-details',
@@ -30,18 +30,22 @@ export class EmployeeDetailsComponent implements OnInit {
   employee: { name: string, id: number, child?: { id: number }[] } | undefined = undefined;
 
   constructor(
-    private _activeRoute: ActivatedRoute
+    private _activeRoute: ActivatedRoute,
+    private _router: Router,
   ) { }
 
   ngOnInit(): void {
-    debugger;
     const employeeId = Number(this._activeRoute?.snapshot?.params?.['id'] || '0');
     this.employee = this.employees.find(f => f.id === employeeId);
+    // this._activeRoute.params.subscribe(params => {
+    //   const employeeId = Number(params['id'] || '0');
+    //   this.employee = this.employees.find(f => f.id === employeeId);
+    // })
   }
 
   onEmployeeClick(id: number): void {
-    debugger;
     window.alert(`Employee ${id} clicked`);
+    this._router.navigate(['/employee/details/3'])
   }
 
 }

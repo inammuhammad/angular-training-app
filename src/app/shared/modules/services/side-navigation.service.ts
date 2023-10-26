@@ -11,7 +11,7 @@ export class SideNavigationService {
   getMenuItems(): INavigation[] {
     return [{
       label: 'Employee',
-      path: '/employee',
+      path: '/employee/all',
       key: '1',
       isActive: false,
       children: [{
@@ -29,9 +29,22 @@ export class SideNavigationService {
       }]
     }, {
       label: 'Staff',
-      path: '/staff',
+      path: '/staff/all',
       key: '2',
       isActive: false,
+      children: [{
+        label: 'List',
+        path: '/staff/all',
+        key: '1',
+        isActive: false,
+        parentKey: '1'
+      }, {
+        label: 'Details',
+        path: '/staff/details/2',
+        key: '2',
+        isActive: false,
+        parentKey: '1'
+      }]
     }]
   }
 }

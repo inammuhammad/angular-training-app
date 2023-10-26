@@ -8,14 +8,12 @@ import { SideNavigationComponent } from './shared/modules/component/side-navigat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './shared/modules/component/header/header/header.component';
-import { DashboardComponent } from './modules/components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SideNavigationComponent,
-    HeaderComponent,
-    DashboardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

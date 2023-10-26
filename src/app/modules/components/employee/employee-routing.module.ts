@@ -2,10 +2,33 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { EmployeeHomeComponent } from './employee-home/employee-home.component';
 
 const routes: Routes = [
-  { path: 'employee/all', component: EmployeeListComponent },
-  { path: 'employee/details/:id', component: EmployeeDetailsComponent },
+  //  ENABLE FOR LAZY LOADING
+  // {
+  //   path: '',
+  //   component: EmployeeHomeComponent,
+  //   children: [
+  //     {
+  //       path: 'all',
+  //       component: EmployeeListComponent
+  //     },
+  //     {
+  //       path: 'details/:id',
+  //       component: EmployeeDetailsComponent
+  //     }
+  //   ]
+  // },
+  //  DISABLE FOR LAZY LOADING
+  {
+    path: 'employee/all',
+    component: EmployeeListComponent
+  },
+  {
+    path: 'employee/details/:id',
+    component: EmployeeDetailsComponent
+  }
 ];
 
 @NgModule({

@@ -28,11 +28,11 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
         filter((event) => event instanceof NavigationEnd),
         startWith(this._router)
       ).subscribe(event => {
+        debugger;
         const url: string = (event instanceof NavigationEnd) ? event.url : this._router.url;
         const urlSegments = url.split('/').filter(f => f);
 
         if (urlSegments && urlSegments.length > 0) {
-          debugger;
           const moduleName = urlSegments[0];
           const componentName = urlSegments[1];
           if (moduleName) {
@@ -46,9 +46,11 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
                     cf.isActive = false;
                     cf.expanded = false;
 
-                    if (cf.path.toLowerCase().includes(`/${moduleName.toLowerCase()}/${componentName.toLowerCase()}`)) {
-                      cf.isActive = true;
-                      cf.expanded = true;
+                    if (componentName) {
+                      if (cf.path.toLowerCase().includes(`/${moduleName.toLowerCase()}/${componentName.toLowerCase()}`)) {
+                        cf.isActive = true;
+                        cf.expanded = true;
+                      }
                     }
                   })
                 }
@@ -61,6 +63,10 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
   }
 
   onMenuItemClick(item: INavigation, isChild: boolean = false): void {
+    // this._router.navigate(['/employee', 'details', '2']);
+    // this._router.navigate(['/employee/details/2'], { queryParams: { id: 2 } });
+    // this._router.navigateByUrl('/employee/details/2')
+    //  /employee/details/2
     this._router.navigate([item.path]);
     const menuItems = this.getMenuItems(isChild ? item : undefined);
     menuItems.forEach(f => {
