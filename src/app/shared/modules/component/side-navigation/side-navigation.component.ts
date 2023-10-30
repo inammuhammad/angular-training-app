@@ -28,7 +28,6 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
         filter((event) => event instanceof NavigationEnd),
         startWith(this._router)
       ).subscribe(event => {
-        debugger;
         const url: string = (event instanceof NavigationEnd) ? event.url : this._router.url;
         const urlSegments = url.split('/').filter(f => f);
 

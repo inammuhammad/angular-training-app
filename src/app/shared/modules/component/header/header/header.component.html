@@ -7,7 +7,7 @@
         </div>
         <div class="col-11">
             <div class="header-right">
-
+                <a (click)="onLogout()" *ngIf="authService.isAuthenticated" class="logout-button">Logout</a>
             </div>
         </div>
     </div>
