@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { LoginComponent } from './modules/components/login/login.component';
+import { LoginGuard } from './shared/guards/login.guard';
 // import { EmployeeHomeComponent } from './modules/components/employee/employee-home/employee-home.component';
 //  DSIABLE FOR LAZY LOADING
 // import { EmployeeModule } from './modules/components/employee/employee.module';
@@ -9,7 +10,8 @@ import { LoginComponent } from './modules/components/login/login.component';
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'employee',

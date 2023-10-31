@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     this._authService.login().subscribe(resp => {
       if (resp) {
+        this._authService.getUserDetails();
         this._router.navigate(['dashboard']);
       }
     })
