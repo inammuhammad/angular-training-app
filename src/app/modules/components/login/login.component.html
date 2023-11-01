@@ -1,4 +1,27 @@
-<p>login works!</p>
-
-<button (click)="onLogin()">Login User</button>
+<div class="login-container">
+    <form [formGroup]="form" *ngIf="form" (submit)="onLogin()">
+        <p>
+            <label>Username: </label>
+            <input type="text" id="username" formControlName="username" required/>
+            <span *ngIf="!form?.get('username')?.value">
+                <label style="color: red;">*Required</label>
+            </span>
+        </p>
+        <p>
+            <label>Password: </label>
+            <input type="password" id="password" formControlName="password" required/>
+            <span *ngIf="!form?.get('password')?.value">
+                <label style="color: red;">*Required</label>
+            </span>
+        </p>
+        <p>
+            <label>Confirm Password: </label>
+            <input type="password" id="confirmpassword" formControlName="confirmpassword" required/>
+        </p>
+        <p>
+            <button type="submit">Login</button>
+            <!-- [disabled]="!form.valid"-->
+        </p>
+    </form>
+</div>
 

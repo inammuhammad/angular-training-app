@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { LoginComponent } from './modules/components/login/login.component';
 import { LoginGuard } from './shared/guards/login.guard';
+import { LoginModule } from './modules/components/login/login.module';
 // import { EmployeeHomeComponent } from './modules/components/employee/employee-home/employee-home.component';
 //  DSIABLE FOR LAZY LOADING
 // import { EmployeeModule } from './modules/components/employee/employee.module';
@@ -35,6 +36,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
+    LoginModule
     //  DSIABLE FOR LAZY LOADING
     // EmployeeModule
   ],
