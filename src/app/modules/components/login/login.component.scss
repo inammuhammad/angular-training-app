@@ -1,9 +1,17 @@
-.login-container{
+.login {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    font-family: 'lato', sans-serif;
 
-    button {
-        float: right;
+    .login-container {
+        width: 450px;
+        display: flex;
+        flex-direction: column;
+
+        button {
+            float: right;
+        }
     }
 }

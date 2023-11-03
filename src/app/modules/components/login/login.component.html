@@ -1,27 +1,85 @@
-<div class="login-container">
-    <form [formGroup]="form" *ngIf="form" (submit)="onLogin()">
-        <p>
-            <label>Username: </label>
-            <input type="text" id="username" formControlName="username" required/>
-            <span *ngIf="!form?.get('username')?.value">
-                <label style="color: red;">*Required</label>
-            </span>
-        </p>
-        <p>
-            <label>Password: </label>
-            <input type="password" id="password" formControlName="password" required/>
-            <span *ngIf="!form?.get('password')?.value">
-                <label style="color: red;">*Required</label>
-            </span>
-        </p>
-        <p>
-            <label>Confirm Password: </label>
-            <input type="password" id="confirmpassword" formControlName="confirmpassword" required/>
-        </p>
-        <p>
-            <button type="submit">Login</button>
-            <!-- [disabled]="!form.valid"-->
-        </p>
-    </form>
+<div class="login">
+    <div class="login-container">
+        <div class="">
+            <form [formGroup]="form" *ngIf="form" (submit)="onLogin()">
+                <div class="" #loginForm>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-3">
+                                <label>Username: </label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" id="username" class="username" formControlName="username"/>
+                                <div *ngIf="form?.get('username')?.errors">
+                                    <div *ngIf="form?.get('username')?.errors?.['required']">
+                                        <label style="color: red;">*Required</label>
+                                    </div>
+                                    <!-- {{(form.get('username')?.errors) | json}} -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-3">
+                                <label>Password: </label>
+                            </div>
+                            <div class="col-9">
+                                <input type="password" id="password" class="password" formControlName="password"/>
+                                <div *ngIf="form?.get('password')?.errors">
+                                    <div *ngIf="form?.get('password')?.errors?.['required']">
+                                        <label style="color: red;">*Required</label>
+                                    </div>
+                                    <div *ngIf="form?.get('password')?.errors?.['pattern']">
+                                        <label style="color: red;">*Password must contain at least one number, one uppercase and a
+                                            lowercase letter and at least 8 characters<br />Password cannot
+                                            contain whitespace
+                                        </label>
+                                    </div>
+                                    <!-- {{(form.get('password')?.errors || {}) | json}} -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-3">
+                                <label>Confirm Password: </label>
+                            </div>
+                            <div class="col-9">
+                                <input type="password" id="confirmpassword" class="confirmpassword" formControlName="confirmpassword"/>
+                                <div *ngIf="form?.get('confirmpassword')?.errors">
+                                    <div *ngIf="form?.get('confirmpassword')?.errors?.['required']">
+                                        <label style="color: red;">*Required</label>
+                                    </div>
+                                    <div *ngIf="form?.get('confirmpassword')?.errors?.['pattern']">
+                                        <label style="color: red;">*Password must contain at least one number, one uppercase and a
+                                            lowercase letter and at least 8 characters<br />Password cannot
+                                            contain whitespace
+                                        </label>
+                                    </div>
+                                    <!-- {{(form.get('confirmpassword')?.errors || {}) | json}} -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div *ngIf="form?.errors">
+                        <div *ngIf="form?.errors?.['mismatch']">
+                            <label style="color: red;">*Password & New Password must be same</label>
+                        </div>
+                    </div>
+                    <br />
+                    <div>
+                        <button type="submit">Login</button>
+                        <button type="button" (click)="patchValues()">Update form</button>
+                        <!-- [disabled]="!form.valid"-->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
