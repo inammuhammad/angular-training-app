@@ -8,13 +8,15 @@ import { SideNavigationComponent } from './shared/modules/component/side-navigat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './shared/modules/component/header/header/header.component';
-import { LoginModule } from './modules/components/login/login.module';
+// import { LoginModule } from './modules/components/login/login.module';
+// import { NumberPowerPipe } from './shared/pipes/number-power.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     SideNavigationComponent,
     HeaderComponent,
+    // NumberPowerPipe,
   ],
   imports: [
     BrowserModule,

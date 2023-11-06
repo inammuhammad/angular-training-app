@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NumberPowerPipe } from 'src/app/shared/pipes/number-power.pipe';
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    NumberPowerPipe
   ],
   imports: [
     CommonModule,

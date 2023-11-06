@@ -1,6 +1,15 @@
 <div class="login">
     <div class="login-container">
         <div class="">
+            <!-- <p>
+                <label>{{date | date: 'longDate' | uppercase}}</label>
+                <br />
+                <label>{{numberValue | numberPower: power}}</label>
+                <input [ngModel]="numberValue | numberPower: power" readonly/>
+                <br />
+                <button (click)="power = power + 1">Increase</button>
+                <button (click)="power = power - 1">Decrease</button>
+            </p> -->
             <form [formGroup]="form" *ngIf="form" (submit)="onLogin()">
                 <div class="" #loginForm>
                     <div class="container-fluid">
@@ -14,7 +23,7 @@
                                     <div *ngIf="form?.get('username')?.errors?.['required']">
                                         <label style="color: red;">*Required</label>
                                     </div>
-                                    <!-- {{(form.get('username')?.errors) | json}} -->
+                                    {{(form.get('username')?.errors) | json}}
                                 </div>
                             </div>
                         </div>
@@ -37,7 +46,7 @@
                                             contain whitespace
                                         </label>
                                     </div>
-                                    <!-- {{(form.get('password')?.errors || {}) | json}} -->
+                                    {{(form.get('password')?.errors || {}) | json}}
                                 </div>
                             </div>
                         </div>
@@ -60,7 +69,7 @@
                                             contain whitespace
                                         </label>
                                     </div>
-                                    <!-- {{(form.get('confirmpassword')?.errors || {}) | json}} -->
+                                    {{(form.get('confirmpassword')?.errors || {}) | json}}
                                 </div>
                             </div>
                         </div>
@@ -75,7 +84,6 @@
                     <div>
                         <button type="submit">Login</button>
                         <button type="button" (click)="patchValues()">Update form</button>
-                        <!-- [disabled]="!form.valid"-->
                     </div>
                 </div>
             </form>

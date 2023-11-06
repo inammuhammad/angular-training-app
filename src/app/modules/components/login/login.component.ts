@@ -10,6 +10,11 @@ import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } fro
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
+  date: Date | null = null;
+  numberValue = 3;
+  power = 1;
+  updatedNumberValue = 0;
+
   form: FormGroup | null = null;
 
   @ViewChild('loginForm') loginForm: ElementRef | undefined;
@@ -21,6 +26,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.date = new Date(2001, 0, 1);
+
+
+
     this.form = this._formBuilder.group({
       username: new FormControl('',
         [
@@ -50,14 +59,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     })
 
     // this.form.addValidators(validator => {
-    //   debugger;
     //   validator.c
     //   return this.passwordMatch
     // })
   }
 
   onLogin(): void {
-    debugger;
     const { username, password } = this.form?.value;
     if (this.form?.valid) {
       this._authService.login().subscribe(resp => {
@@ -70,7 +77,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   patchValues(): void {
-    debugger;
     const values = { username: 'minamulhaque', password: 'Zxcv@12' };
     if (this.form) {
       this.form.patchValue(values);

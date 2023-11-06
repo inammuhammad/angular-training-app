@@ -1,1 +1,6 @@
 <p>dashboard works!</p>
+
+<label *ngFor="let empStat of empStats">{{empStat}}</label>
+<!-- <label *ngFor="let empStat of empStats$ | async">{{empStat}}</label> -->
+<br />
+<button (click)="addEmp()">Add emp</button>

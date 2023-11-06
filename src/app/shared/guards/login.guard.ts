@@ -21,7 +21,6 @@ export class LoginGuard implements CanActivate {
     const isAuthenticated = this._authService.isAuthenticated;
 
     // const promise = new Promise((resolve, reject) => {
-    //   debugger;
     //   try {
     //     resolve(true)
     //   } catch (error) {
@@ -30,18 +29,15 @@ export class LoginGuard implements CanActivate {
     // });
 
     // promise.then(resp => {
-    //   debugger;
     // }).catch(error => {
 
     // })
 
     // const observable = new Observable(observer => {
-    //   debugger;
     //   observer.next(true);
     // }).pipe(catchError(error => of(false)));
 
     // observable.subscribe(resp => {
-    //   debugger;
     // })
 
     if (isAuthenticated && route.routeConfig?.path?.includes('login')) {

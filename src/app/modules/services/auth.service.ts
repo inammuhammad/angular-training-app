@@ -34,11 +34,9 @@ export class AuthService {
   }
 
   getUserDetails(): void {
-    debugger;
 
     // SWITCH MAP
     const observableMoreDetails = new Observable(observer => {
-      debugger;
       const secondData = { office: 'Systems', phoneNumber: 1234566 };
       observer.next(secondData);
     });
@@ -48,19 +46,16 @@ export class AuthService {
       observer.next(firstData);
     }).pipe(switchMap(resp => {
       return observableMoreDetails.pipe(map(secondData => {
-        debugger;
         return { secondData, firstData: resp }; // {secondData: {}, firstData: {}}
       }));
     }));
 
     observableBasicDetails.subscribe(resp => {
-      debugger;
     });
 
     const observable = new Observable(observer => {
       observer.next([{ userId: 1, name: 'Inam' }]);
     }).pipe(mergeMap(resp => {
-      debugger;
       const anotherResp: any[] = [];
       anotherResp.push(...resp as []);
       anotherResp.forEach(item => {
@@ -70,7 +65,6 @@ export class AuthService {
     }))
 
     observable.subscribe(resp => {
-      debugger;
     });
   }
 }
