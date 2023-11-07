@@ -3,9 +3,12 @@
     <div *ngFor="let employee of employees">
         <label>
             <a [routerLink]="'/employee/details/' + employee.id">{{employee.name}}</a>
+            <button (click)="onDeleteEmployee(employee.id)">Delete</button>
         </label>
         <!-- <label (click)="gotoDetail(employee.id)">
             {{employee.name}}
         </label> -->
     </div>
+
+    <button (click)="onCreateEmployee()">Create</button>
 </div>
