@@ -23,7 +23,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   gotoDetail(id: number): void {
-    this._route.navigate([`/employee/details/${id}`])
+    this._route.navigate([`/employee/details/${id}`], { skipLocationChange: true, replaceUrl: false })
   }
 
   onCreateEmployee() {

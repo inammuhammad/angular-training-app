@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this._authService.login().subscribe(resp => {
         if (resp) {
           this._authService.getUserDetails();
-          this._router.navigate(['dashboard']);
+          this._router.navigate(['dashboard'], { skipLocationChange: true, replaceUrl: false });
         }
       })
     }

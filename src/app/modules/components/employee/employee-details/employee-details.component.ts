@@ -45,7 +45,7 @@ export class EmployeeDetailsComponent implements OnInit {
 
   onEmployeeClick(id: number): void {
     window.alert(`Employee ${id} clicked`);
-    this._router.navigate(['/employee/details/3'])
+    this._router.navigate(['/employee/details/3'], { skipLocationChange: true });
   }
 
 }

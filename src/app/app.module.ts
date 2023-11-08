@@ -8,7 +8,9 @@ import { SideNavigationComponent } from './shared/modules/component/side-navigat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './shared/modules/component/header/header/header.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { InterceptorService } from './shared/services/interceptor.service';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 // import { LoginModule } from './modules/components/login/login.module';
 // import { NumberPowerPipe } from './shared/pipes/number-power.pipe';
 
@@ -25,10 +27,15 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     BrowserAnimationsModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    LoadingBarModule
     // LoginModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
