@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoadingBarService } from '@ngx-loading-bar/core';
-import { Observable, delay, map, tap } from 'rxjs';
+import { Observable, catchError, delay, map, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,8 @@ export class InterceptorService implements HttpInterceptor {
 
       this._loadingBar.stop();
       return res;
+    }), catchError(error => {
+      return of();
     }));
   }
 }

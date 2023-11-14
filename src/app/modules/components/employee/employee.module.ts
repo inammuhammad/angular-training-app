@@ -6,6 +6,8 @@ import { EmployeeHomeComponent } from './employee-home/employee-home.component';
 import { RouterModule } from '@angular/router';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { HighlightDirective } from 'src/app/directives/highlight.directive';
+import { EmployeeCreateComponent } from './employee-create/employee-create.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,12 +15,15 @@ import { HighlightDirective } from 'src/app/directives/highlight.directive';
     EmployeeListComponent,
     EmployeeHomeComponent,
     EmployeeDetailsComponent,
-    HighlightDirective
+    HighlightDirective,
+    EmployeeCreateComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    EmployeeRoutingModule
+    EmployeeRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
 })
 export class EmployeeModule { }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 import { Observable, delay, map, mergeMap, observable, of, switchMap } from 'rxjs';
 
 @Injectable({
@@ -8,27 +9,37 @@ export class AuthService {
 
   isAuthenticated = false;
 
-  constructor() {
+  constructor(
+    private _loadingBar: LoadingBarService
+  ) {
     const isAuthenticated = localStorage.getItem('isAuthenticated') !== null;
     this.isAuthenticated = isAuthenticated;
   }
 
   login(): Observable<boolean> {
+    this._loadingBar.start();
     const observable = new Observable<boolean>(observer => {
+      observer.next(true);
+    }).pipe(delay(2500), map(res => {
+      this._loadingBar.stop();
       localStorage.setItem('isAuthenticated', 'true');
       this.isAuthenticated = true;
-      observer.next(true);
-    }).pipe(delay(2500));
+      return res;
+    }));
 
     return observable;
   }
 
   logout(): Observable<boolean> {
+    this._loadingBar.start();
     const observable = new Observable<boolean>(observer => {
+      observer.next(true);
+    }).pipe(delay(2500), map(res => {
+      this._loadingBar.stop();
       localStorage.removeItem('isAuthenticated');
       this.isAuthenticated = false;
-      observer.next(true);
-    }).pipe(delay(2500));
+      return res;
+    }));
 
     return observable
   }

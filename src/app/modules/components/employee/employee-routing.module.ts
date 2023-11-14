@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { EmployeeHomeComponent } from './employee-home/employee-home.component';
+import { EmployeeCreateComponent } from './employee-create/employee-create.component';
 
 const routes: Routes = [
   //  ENABLE FOR LAZY LOADING
@@ -13,6 +14,10 @@ const routes: Routes = [
       {
         path: 'all',
         component: EmployeeListComponent
+      },
+      {
+        path: 'new',
+        component: EmployeeCreateComponent
       },
       {
         path: 'details/:id',

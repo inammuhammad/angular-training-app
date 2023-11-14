@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoadingBarService } from '@ngx-loading-bar/core';
+import { AuthService } from './modules/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,14 @@ import { LoadingBarService } from '@ngx-loading-bar/core';
 export class AppComponent {
   title = 'my-app';
 
-  constructor(private _loadingBar: LoadingBarService) { }
+  constructor(
+    // private _loadingBar: LoadingBarService
+    private _authService: AuthService
+  ) { }
+
+  get isAuthenticated(): boolean {
+    return this._authService.isAuthenticated;
+  }
 
   // startLoading() {
   //   this._loadingBar.start();

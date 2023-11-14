@@ -1,13 +1,10 @@
 <div style="padding-top: 10px; padding-left: 15px;">
-    <h4>{{title}}</h4>
+    <h4>{{title}} <a [routerLink]="'/employee/new'">New</a></h4>
     <div *ngFor="let employee of employees">
         <label>
             <a [routerLink]="'/employee/details/' + employee.id">{{employee.name}}</a>
             <button (click)="onDeleteEmployee(employee.id)">Delete</button>
         </label>
-        <!-- <label (click)="gotoDetail(employee.id)">
-            {{employee.name}}
-        </label> -->
     </div>
 
     <button (click)="onCreateEmployee()">Create</button>
