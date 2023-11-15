@@ -1,4 +1,4 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { Observable, catchError, delay, map, of, tap } from 'rxjs';
@@ -25,7 +25,8 @@ export class InterceptorService implements HttpInterceptor {
 
     this._loadingBar.start();
 
-    return next.handle(clonedRequest).pipe(delay(5000), map((res: any) => {
+    return next.handle(clonedRequest).pipe(delay(2000), map((res: any) => {
+      debugger;
       if (res.status === 401) {
         // call login api
         // TODO: refresh TOKEN logic
@@ -34,7 +35,8 @@ export class InterceptorService implements HttpInterceptor {
       this._loadingBar.stop();
       return res;
     }), catchError(error => {
-      return of();
+      debugger;
+      throw error;
     }));
   }
 }

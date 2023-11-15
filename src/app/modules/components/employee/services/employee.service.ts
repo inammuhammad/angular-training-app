@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 
 export interface IEmployee {
   id: number;
@@ -29,12 +29,23 @@ export class EmployeeService {
 
   }
 
-  list(): Observable<IEmployee[]> {
-    const request = this._httpClient.get(`${this._baseUrl}?per_page=50`).pipe(map((resp: any) => {
+  list(pageSize = 50): Observable<IEmployee[]> {
+    const request = this._httpClient.get(`${this._baseUrl}?per_page=${pageSize}`).pipe(map((resp: any) => {
       return resp.data;
     }));
 
     return request;
+  }
+
+  listNew(): Observable<any> {
+    return this._httpClient.get('https://reqres.in/user/usr').pipe(map(resp => {
+      debugger;
+      return resp;
+    }), catchError(error => {
+      debugger;
+      throw error;
+      // return of();
+    }));
   }
 
   create(value: IEmployee): Observable<IEmployee> {

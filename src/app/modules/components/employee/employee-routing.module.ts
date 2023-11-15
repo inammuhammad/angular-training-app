@@ -12,8 +12,9 @@ const routes: Routes = [
     component: EmployeeHomeComponent,
     children: [
       {
-        path: 'all',
-        component: EmployeeListComponent
+        path: 'all/:viewId',
+        component: EmployeeListComponent,
+        data: { id: 1 }
       },
       {
         path: 'new',

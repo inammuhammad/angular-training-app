@@ -11,12 +11,12 @@ export class SideNavigationService {
   getMenuItems(): INavigation[] {
     return [{
       label: 'Employee',
-      path: '/employee/all',
+      path: '/employee/all/view',
       key: '1',
       isActive: false,
       children: [{
         label: 'List',
-        path: '/employee/all',
+        path: '/employee/all/view',
         key: '1',
         isActive: false,
         parentKey: '1'
